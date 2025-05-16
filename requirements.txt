@@ -1,0 +1,6 @@
+dotenv
+setuptools
+fastapi
+uvicorn
+git+https://github.com/OperavonderVollmer/OperaPowerRelay@main
+git+https://github.com/OperavonderVollmer/ScreenHud-Forecast@main
