@@ -5,3 +5,4 @@ uvicorn
 pydantic
 git+https://github.com/OperavonderVollmer/OperaPowerRelay@main
 git+https://github.com/OperavonderVollmer/ScreenHud-Forecast@main
+git+https://github.com/OperavonderVollmer/ScreenHUD-Alarm
