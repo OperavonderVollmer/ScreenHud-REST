@@ -17,7 +17,7 @@ def root():
 def forecast(city: BaseModels.CityIdentifier = Depends(Current.get_current_city)):
 
     forecast_data = Forecast.get_forecast(city.city)
-    print(f"Forecast call made for {city.city}. Results: {forecast_data}")
+    print(f"Forecast call made for {city}. Results: {forecast_data}")
 
     return {"status": "OK" if forecast_data else "ERROR", "status_code": 200 if forecast_data else 404, "default_city": city.city or "Unset" , "payload": forecast_data or {} }
 
@@ -55,17 +55,17 @@ def clear_alarm(alarm: BaseModels.AlarmIdentifier):
     resp = AlarmConnection.start_alarm(alarm.title)
     return {"status": "OK", "status_code": 200, "payload": {"response": resp}}
 
-@app.post("/alarms/clear_all")
+@app.get("/alarms/clear_all")
 def clear_all_alarms():
     resp = AlarmConnection.clear_all_alarms()
     return {"status": "OK", "status_code": 200, "payload": {"response": resp}}
 
 @app.post("/alarms/set_auto_start")
-def set_auto_start(t: str):
-    resp = AlarmConnection.set_auto_start(t)
+def set_auto_start(toggle: BaseModels.ToggleIdentifier):
+    resp = AlarmConnection.set_auto_start(toggle.t)
     return {"status": "OK", "status_code": 200, "payload": {"response": resp}}
 
 @app.post("/alarms/set_auto_save")
-def set_auto_save(t: str):
-    resp = AlarmConnection.set_auto_save(t)
+def set_auto_save(toggle: BaseModels.ToggleIdentifier):
+    resp = AlarmConnection.set_auto_save(toggle.t)
     return {"status": "OK", "status_code": 200, "payload": {"response": resp}}

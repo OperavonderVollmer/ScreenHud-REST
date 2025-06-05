@@ -47,8 +47,9 @@ def clear_all_alarms() -> str:
 def clear_alarm(name: str) -> str:
     return alarm_manager.clear_alarm(name)
 
-def list_alarms() -> list[Alarm.Alarm]:
-    return alarm_manager.list_alarms()
+def list_alarms() -> list[dict]:
+    return [a.to_json() for a in alarm_manager.list_alarms()]
+
 
 
 alarm_manager = Alarm.AlarmManager()

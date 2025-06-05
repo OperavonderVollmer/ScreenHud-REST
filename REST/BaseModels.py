@@ -13,3 +13,9 @@ class AlarmIdentifier(BaseModel):
         Base model for alarms
     """
     title: str = ""
+
+class ToggleIdentifier(BaseModel):
+    """
+        Base model for toggles
+    """
+    t: str = ""
